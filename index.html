@@ -58,7 +58,7 @@
        RESET & BASE
     ============================================================ */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
     body {
       font-family: var(--font-main);
       font-size: 16px;
@@ -144,7 +144,7 @@
       padding: 80px 20px;
       background:
         linear-gradient(rgba(0,0,0,0.68), rgba(0,0,0,0.68)),
-        url('https://images.pexels.com/photos/8486934/pexels-photo-8486934.jpeg?auto=compress&cs=tinysrgb&w=1600') center/cover no-repeat;
+        url('assets/obra-estrutura.jpeg') center/cover no-repeat;
       color: var(--white);
     }
     .hero::after {
@@ -360,6 +360,78 @@
       line-height: 1.3;
     }
     .benefit-desc { font-size: 15px; color: rgba(255,255,255,0.65); line-height: 1.7; }
+
+    /* ============================================================
+       TIPOS DE LAUDOS
+    ============================================================ */
+    .service-types {
+      padding: 100px 20px;
+      background: var(--gray-light);
+      text-align: center;
+    }
+    .service-types .section-title { color: var(--black); }
+    .service-types .section-subtitle { color: #555; margin: 14px auto 52px; }
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .service-card {
+      background: var(--white);
+      border: 1px solid rgba(0,0,0,0.06);
+      border-radius: 8px;
+      padding: 32px 24px;
+      text-align: center;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 36px rgba(0,0,0,0.1);
+    }
+    .service-icon {
+      width: 56px;
+      height: 56px;
+      background: linear-gradient(135deg, rgba(30,42,94,0.08) 0%, rgba(198,40,40,0.08) 100%);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 18px;
+    }
+    .service-icon svg { width: 28px; height: 28px; }
+    .service-card h3 {
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      line-height: 1.3;
+    }
+    .service-card p {
+      font-size: 13px;
+      color: #666;
+      line-height: 1.6;
+    }
+    .service-card.service-other {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--red) 100%);
+      border: none;
+    }
+    .service-card.service-other h3 { color: var(--white); }
+    .service-card.service-other p { color: rgba(255,255,255,0.75); }
+    .service-card.service-other .service-icon {
+      background: rgba(255,255,255,0.15);
+    }
+    .service-card.service-other .service-icon svg { stroke: white; }
+    .service-grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      max-width: 825px;
+      margin: 20px auto 0;
+    }
 
     /* ============================================================
        4. EXEMPLOS REAIS
@@ -899,7 +971,7 @@
       text-align: center;
       background:
         linear-gradient(rgba(0,0,0,0.82), rgba(0,0,0,0.82)),
-        url('https://images.pexels.com/photos/3862135/pexels-photo-3862135.jpeg?auto=compress&cs=tinysrgb&w=1600') center/cover no-repeat;
+        url('assets/obra-baldrame.jpeg') center/cover no-repeat;
       color: rgba(255,255,255,0.6);
     }
     .footer-logo {
@@ -985,8 +1057,11 @@
       .social-proof { gap: 16px; margin-top: 32px; padding-top: 24px; }
       .proof-number { font-size: 18px; }
       .proof-label { font-size: 10px; }
-      .how, .gallery, .testimonials, .faq, .examples, .timeline { padding: 60px 16px; }
+      .how, .gallery, .testimonials, .faq, .examples, .timeline, .service-types { padding: 60px 16px; }
       .form-section { padding: 60px 16px; }
+      .service-grid { grid-template-columns: repeat(2, 1fr); }
+      .service-grid-bottom { grid-template-columns: repeat(2, 1fr); max-width: 100%; }
+      .service-grid-bottom .service-card:last-child { grid-column: 1 / -1; }
       .benefits { grid-template-columns: 1fr; }
       .benefit-col { padding: 44px 24px; }
       .examples-grid { grid-template-columns: 1fr; max-width: 420px; }
@@ -1000,6 +1075,9 @@
       .btn { padding: 14px 28px; font-size: 13px; }
       .mobile-cta { display: block; }
       .whatsapp-float { bottom: 88px; }
+      .carousel-prev { left: 8px; }
+      .carousel-next { right: 8px; }
+      .carousel-wrapper { padding: 0 16px; }
     }
     @media (max-width: 680px) {
       .hero { min-height: auto; padding: 48px 16px 36px; }
@@ -1019,6 +1097,9 @@
       .card-installment { font-size: 22px; padding: 5px 20px; }
       .benefit-text { font-size: clamp(18px, 4vw, 24px); }
       .timeline-grid { grid-template-columns: 1fr; }
+      .service-grid { grid-template-columns: 1fr; }
+      .service-grid-bottom { grid-template-columns: 1fr; max-width: 100%; }
+      .service-grid-bottom .service-card:last-child { grid-column: auto; }
       footer { padding: 48px 16px 36px; }
     }
   </style>
@@ -1034,15 +1115,15 @@
         <img src="assets/logo-linear-white.png" alt="Linear - Soluções em Engenharia e Arquitetura" style="max-width:100%;height:auto;" />
       </div>
 
-      <p class="hero-eyebrow">Laudos Técnicos e Patologia das Construções</p>
+      <p class="hero-eyebrow">Laudos, Perícias e Patologia das Construções</p>
 
       <h1 class="hero-headline">
-        Sua obra tem problemas? Descubra a<br>
-        <em>verdade técnica</em>.
+        Laudos de patologia, inspeção estrutural<br>
+        e <em>perícias de engenharia</em>.
       </h1>
 
       <p class="hero-subheadline">
-        Laudos técnicos, vistorias e perícias para identificar vícios construtivos, fissuras, infiltrações e falhas estruturais. Relatório completo com respaldo de engenheiro registrado no CREA.
+        Laudos técnicos com ART para vícios construtivos, inspeção de estruturas, vistorias de recebimento, perícias judiciais e documentação para financiamentos. Relatórios fundamentados em normas ABNT, emitidos por engenheiros registrados no CREA.
       </p>
 
       <div class="hero-buttons" style="flex-direction:column;align-items:center;">
@@ -1132,8 +1213,8 @@
         </svg>
       </div>
       <span class="benefit-label">Respaldo técnico</span>
-      <p class="benefit-text">Laudo com ART e fundamentação em normas ABNT</p>
-      <p class="benefit-desc">Documento técnico assinado por engenheiro registrado no CREA, com validade para processos judiciais, seguradoras e negociações.</p>
+      <p class="benefit-text">Laudo com ART, fundamentação em normas ABNT e validade jurídica</p>
+      <p class="benefit-desc">Documento assinado por engenheiro registrado no CREA. Válido para processos judiciais, seguradoras, financiamentos, aprovações em órgãos públicos e negociações técnicas.</p>
     </div>
 
     <div class="benefit-col fade-in" style="transition-delay:0.15s">
@@ -1143,8 +1224,8 @@
         </svg>
       </div>
       <span class="benefit-label">Diagnóstico preciso</span>
-      <p class="benefit-text">Identificamos a causa real do problema, não apenas o sintoma</p>
-      <p class="benefit-desc">Trincas, infiltrações e fissuras podem ter origens diferentes. Nosso laudo investiga a causa raiz para que a solução seja definitiva.</p>
+      <p class="benefit-text">Análise técnica que vai além do sintoma e identifica a causa real</p>
+      <p class="benefit-desc">Fissuras, infiltrações e deformações podem ter origens muito diferentes. Nosso laudo investiga a causa raiz com metodologia técnica para que a solução seja adequada e definitiva.</p>
     </div>
 
     <div class="benefit-col fade-in" style="transition-delay:0.3s">
@@ -1155,7 +1236,96 @@
       </div>
       <span class="benefit-label">Agilidade</span>
       <p class="benefit-text">Vistoria em até 7 dias e laudo entregue em até 15 dias úteis</p>
-      <p class="benefit-desc">Sabemos que quem busca um laudo está com urgência. Priorizamos agilidade sem comprometer a qualidade técnica do relatório.</p>
+      <p class="benefit-desc">Seja para uma decisão de compra, uma exigência burocrática ou uma situação urgente na obra, priorizamos agilidade sem comprometer a qualidade técnica do relatório.</p>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       TIPOS DE LAUDOS E PERÍCIAS
+  ============================================================ -->
+  <section class="service-types fade-in">
+    <div class="container">
+      <p class="section-label">O que fazemos</p>
+      <h2 class="section-title">Tipos de laudos e perícias</h2>
+      <p class="section-subtitle">Cada situação exige um tipo de análise técnica. Atuamos nas principais frentes de investigação e documentação de construções.</p>
+
+      <div class="service-grid">
+
+        <div class="service-card fade-in">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="1.8">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M10 15l2-6 2 6"/><path d="M10.5 13.5h3"/>
+            </svg>
+          </div>
+          <h3>Patologia Construtiva</h3>
+          <p>Investigação de vícios construtivos, fissuras, infiltrações e falhas de execução. O laudo que revela se a construtora fez o serviço direito.</p>
+        </div>
+
+        <div class="service-card fade-in" style="transition-delay:0.05s">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="1.8">
+              <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 3v18"/>
+            </svg>
+          </div>
+          <h3>Inspeção Estrutural</h3>
+          <p>Análise da integridade de pilares, vigas, lajes e fundações. Para quando o medo é real e você precisa saber se a estrutura está segura.</p>
+        </div>
+
+        <div class="service-card fade-in" style="transition-delay:0.1s">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="1.8">
+              <path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+            </svg>
+          </div>
+          <h3>Vistoria de Recebimento</h3>
+          <p>Inspeção completa na entrega de obra ou imóvel novo. Identifica defeitos antes que virem seu problema - e enquanto a garantia ainda vale.</p>
+        </div>
+
+        <div class="service-card fade-in" style="transition-delay:0.15s">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="1.8">
+              <circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/><path d="M4.93 4.93l14.14 14.14"/>
+            </svg>
+          </div>
+          <h3>Perícia para Litígio</h3>
+          <p>Assistência técnica judicial e extrajudicial. Laudo pericial com fundamentação em normas ABNT, pronto para uso em processos e arbitragens.</p>
+        </div>
+
+      </div>
+
+      <div class="service-grid-bottom">
+
+        <div class="service-card fade-in" style="transition-delay:0.2s">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="1.8">
+              <rect x="2" y="3" width="20" height="18" rx="2"/><path d="M2 9h20"/><path d="M10 3v6"/>
+            </svg>
+          </div>
+          <h3>Medição e Viabilidade Financeira</h3>
+          <p>Planilhas PCI e PLS para financiamentos pela Caixa Econômica. Laudos de medição e viabilidade para liberação de parcelas.</p>
+        </div>
+
+        <div class="service-card fade-in" style="transition-delay:0.25s">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="1.8">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M12 6v6"/><circle cx="12" cy="16" r="1"/>
+            </svg>
+          </div>
+          <h3>AVCB / CLCB</h3>
+          <p>Laudos de segurança contra incêndio para obtenção de Auto de Vistoria e Certificado de Licenciamento do Corpo de Bombeiros.</p>
+        </div>
+
+        <div class="service-card service-other fade-in" style="transition-delay:0.3s">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8">
+              <circle cx="12" cy="12" r="10"/><path d="M12 8v8"/><path d="M8 12h8"/>
+            </svg>
+          </div>
+          <h3>Outros Laudos</h3>
+          <p>Cada caso é único. Se o seu problema não está listado aqui, entre em contato. Avaliamos a situação e indicamos o tipo de laudo mais adequado.</p>
+        </div>
+
+      </div>
     </div>
   </section>
 
@@ -1174,7 +1344,7 @@
 
         <article class="example-card fade-in">
           <div class="card-header">
-            <img loading="lazy" src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&q=80" alt="Laudo de vícios construtivos - fachada" />
+            <img loading="lazy" src="assets/obra-fachada.jpeg" alt="Laudo de vícios construtivos - fachada" />
             <div class="card-specs">
               <div class="spec-item">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
@@ -1208,7 +1378,7 @@
 
         <article class="example-card fade-in" style="transition-delay:0.15s">
           <div class="card-header">
-            <img loading="lazy" src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80" alt="Perícia estrutural - fundação" />
+            <img loading="lazy" src="assets/obra-fundacao.jpeg" alt="Perícia estrutural - fundação" />
             <div class="card-specs">
               <div class="spec-item">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
@@ -1242,7 +1412,7 @@
 
         <article class="example-card fade-in" style="transition-delay:0.3s">
           <div class="card-header">
-            <img loading="lazy" src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&q=80" alt="Vistoria cautelar - baldrame" />
+            <img loading="lazy" src="assets/obra-acabamento.jpeg" alt="Vistoria cautelar - imóvel" />
             <div class="card-specs">
               <div class="spec-item">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
@@ -1297,12 +1467,12 @@
         </button>
 
         <div class="carousel-track" id="carouselTrack">
-          <div class="carousel-slide"><img loading="lazy" src="https://images.pexels.com/photos/8293670/pexels-photo-8293670.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Inspetor com prancheta em vistoria" /></div>
-          <div class="carousel-slide"><img loading="lazy" src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&q=80" alt="Fissura em parede inspecionada" /></div>
-          <div class="carousel-slide"><img loading="lazy" src="https://images.unsplash.com/photo-1590274853856-f22d5ee3d228?w=800&q=80" alt="Fachada de edifício analisada" /></div>
-          <div class="carousel-slide"><img loading="lazy" src="https://images.pexels.com/photos/6788272/pexels-photo-6788272.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Detalhe de trinca em estrutura" /></div>
-          <div class="carousel-slide"><img loading="lazy" src="https://images.pexels.com/photos/3862135/pexels-photo-3862135.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Engenheiros analisando projeto" /></div>
-          <div class="carousel-slide"><img loading="lazy" src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80" alt="Canteiro de obra em análise" /></div>
+          <div class="carousel-slide"><img loading="lazy" src="assets/obra-estrutura.jpeg" alt="Estrutura em análise" /></div>
+          <div class="carousel-slide"><img loading="lazy" src="assets/obra-fachada.jpeg" alt="Fachada de obra vistoriada" /></div>
+          <div class="carousel-slide"><img loading="lazy" src="assets/obra-fundacao.jpeg" alt="Fundação analisada" /></div>
+          <div class="carousel-slide"><img loading="lazy" src="assets/obra-baldrame.jpeg" alt="Baldrame e ferragem" /></div>
+          <div class="carousel-slide"><img loading="lazy" src="assets/obra-concretagem.jpeg" alt="Concretagem em vistoria" /></div>
+          <div class="carousel-slide"><img loading="lazy" src="assets/obra-baldrame-2.jpeg" alt="Fundação em inspeção" /></div>
         </div>
 
         <button class="carousel-btn carousel-next" aria-label="Próxima imagem">
@@ -1320,16 +1490,16 @@
   <section class="testimonials fade-in">
     <div class="container">
       <p class="section-label">Quem já contratou nossos laudos</p>
-      <h2 class="section-title">Depoimentos de clientes</h2>
+      <h2 class="section-title">O que dizem nossos clientes</h2>
 
       <div class="testimonials-grid">
 
         <article class="testimonial-card">
           <div class="testimonial-body">
             <h3 class="testimonial-name">Marcos Henrique</h3>
-            <p class="testimonial-role">Proprietário - Residência com vícios construtivos</p>
+            <p class="testimonial-role">Proprietário - Laudo de patologia construtiva</p>
             <p class="testimonial-quote">
-              A construtora dizia que as trincas eram normais. O laudo da Linear provou que era problema na fundação. Com o relatório em mãos, consegui resolver juridicamente.
+              Surgiram trincas depois da entrega e eu precisava entender se era algo grave ou superficial. O laudo da Linear foi claro e bem fundamentado. Com o relatório em mãos, consegui resolver a situação com a construtora de forma objetiva.
             </p>
           </div>
         </article>
@@ -1337,9 +1507,9 @@
         <article class="testimonial-card">
           <div class="testimonial-body">
             <h3 class="testimonial-name">Adriana Costa</h3>
-            <p class="testimonial-role">Compradora - Imóvel usado</p>
+            <p class="testimonial-role">Compradora - Vistoria de recebimento</p>
             <p class="testimonial-quote">
-              Antes de fechar a compra, pedi uma vistoria cautelar. O laudo identificou problemas na estrutura que o vendedor não mencionou. Economizei mais de R$ 50 mil em reparos que seriam minha responsabilidade.
+              Antes de fechar a compra do imóvel, contratei uma vistoria cautelar. O laudo identificou pontos que precisavam de atenção e me deu segurança para negociar as condições certas. Valeu cada centavo investido.
             </p>
           </div>
         </article>
@@ -1354,20 +1524,20 @@
   <section class="security fade-in" aria-label="Imparcialidade e rigor técnico">
 
     <div class="security-text">
-      <p class="section-label">Imparcialidade técnica</p>
-      <h2 class="section-title">Laudos com rigor e independência</h2>
-      <p class="security-subtitle">Engenheiros Pedro e Marcos conduzem pessoalmente cada vistoria.</p>
+      <p class="section-label">Responsabilidade técnica</p>
+      <h2 class="section-title">Laudos com rigor, independência e rastreabilidade</h2>
+      <p class="security-subtitle">Engenheiros Pedro e Marcos conduzem pessoalmente cada vistoria e respondem tecnicamente por cada laudo.</p>
       <div class="security-divider"></div>
       <p>
-        Cada laudo é elaborado com base em inspeção visual detalhada, registro fotográfico e análise fundamentada nas normas da ABNT. ART emitida para todos os documentos.
+        Cada laudo é elaborado com inspeção visual detalhada, registro fotográfico, análise fundamentada nas normas da ABNT e ART emitida. Documento completo, pronto para uso em processos, financiamentos, seguradoras ou aprovações em órgãos públicos.
       </p>
       <p>
-        Somos independentes - não temos vínculo com construtoras, imobiliárias ou seguradoras. Nosso compromisso é exclusivamente com a verdade técnica.
+        Somos independentes - sem vínculo com construtoras, imobiliárias ou seguradoras. O compromisso é exclusivamente com a verdade técnica, seja para resolver uma disputa, cumprir uma exigência burocrática ou tomar uma decisão segura sobre um imóvel.
       </p>
     </div>
 
     <div class="security-image">
-      <img loading="lazy" src="https://images.pexels.com/photos/3862628/pexels-photo-3862628.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Vistoria técnica em obra" />
+      <img loading="lazy" src="assets/obra-concretagem.jpeg" alt="Vistoria técnica em obra" />
       <div class="security-badge">
         <strong>100%</strong>
         <span>imparcialidade técnica</span>
@@ -1386,13 +1556,13 @@
       <p class="section-subtitle">Respostas para as dúvidas mais comuns de quem precisa de um laudo técnico.</p>
 
       <div class="faq-item">
-        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Qual a diferença entre laudo e perícia?</button>
-        <div class="faq-answer"><p>O laudo técnico é um documento que registra a situação da construção e identifica problemas. A perícia é um tipo de laudo mais aprofundado, geralmente solicitado para fins judiciais, com análise de causas e responsabilidades.</p></div>
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Qual a diferença entre laudo técnico e perícia?</button>
+        <div class="faq-answer"><p>O laudo técnico registra a situação da construção e identifica problemas com fundamentação em normas. A perícia é um tipo de laudo mais aprofundado, geralmente solicitado para fins judiciais, com análise detalhada de causas e responsabilidades. Atuamos nos dois formatos.</p></div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">O laudo serve como prova em processo judicial?</button>
-        <div class="faq-answer"><p>Sim. Nossos laudos são emitidos com ART e seguem normas da ABNT, tendo validade como prova técnica em processos judiciais, arbitragens e negociações extrajudiciais.</p></div>
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">O laudo tem validade jurídica?</button>
+        <div class="faq-answer"><p>Sim. Todos os laudos são emitidos com ART e seguem normas da ABNT, tendo validade como documento técnico em processos judiciais, arbitragens, negociações, seguradoras e órgãos públicos. Também atuamos como assistentes técnicos em perícias judiciais.</p></div>
       </div>
 
       <div class="faq-item">
@@ -1401,13 +1571,13 @@
       </div>
 
       <div class="faq-item">
-        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Vocês atendem apenas obras residenciais?</button>
-        <div class="faq-answer"><p>Não. Fazemos laudos para residências, edifícios, comércios e indústrias. Qualquer tipo de construção que apresente problemas ou que precise de vistoria técnica.</p></div>
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Vocês fazem laudo para financiamento pela Caixa?</button>
+        <div class="faq-answer"><p>Sim. Trabalhamos com as planilhas PCI e PLS da Caixa Econômica Federal, incluindo laudos de medição e viabilidade financeira para liberação de parcelas de financiamento de construção.</p></div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">O que é uma vistoria cautelar?</button>
-        <div class="faq-answer"><p>É uma vistoria feita antes da compra de um imóvel ou antes do início de uma obra vizinha. Serve para registrar a situação atual do imóvel e proteger você de responsabilizações futuras.</p></div>
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Vocês atendem apenas obras residenciais?</button>
+        <div class="faq-answer"><p>Não. Fazemos laudos para residências, edifícios, comércios e indústrias. Qualquer tipo de construção que precise de documentação técnica, seja por exigência burocrática, decisão de compra, financiamento ou investigação de problemas construtivos.</p></div>
       </div>
     </div>
   </section>
@@ -1472,9 +1642,12 @@
             <label for="tipoLaudo">Tipo de laudo *</label>
             <select id="tipoLaudo" name="tipoLaudo" required>
               <option value="" disabled selected>Selecione uma opção</option>
-              <option value="vicios_construtivos">Laudo de vícios construtivos</option>
-              <option value="pericia_estrutural">Perícia estrutural</option>
-              <option value="vistoria_cautelar">Vistoria cautelar (pré-compra)</option>
+              <option value="patologia_construtiva">Patologia construtiva / vícios</option>
+              <option value="inspecao_estrutural">Inspeção estrutural</option>
+              <option value="vistoria_recebimento">Vistoria de recebimento de obra</option>
+              <option value="pericia_litigio">Perícia para litígio / judicial</option>
+              <option value="medicao_viabilidade">Medição e viabilidade (PCI/PLS)</option>
+              <option value="avcb_clcb">AVCB / CLCB (bombeiros)</option>
               <option value="outro">Outro</option>
             </select>
             <span class="error-msg" id="tipoLaudoError">Por favor, selecione uma opção.</span>
